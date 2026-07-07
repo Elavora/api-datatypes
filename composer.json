@@ -1,0 +1,46 @@
+{
+    "name":  "elavora/api-datatypes",
+    "description":  "Pacote agregador dos DataTypes Elavora API.",
+    "type":  "library",
+    "license":  "MIT",
+    "require":  {
+                    "php":  "\u003e=8.1",
+                    "elavora/api-datatype-base64":  "^0.1",
+                    "elavora/api-datatype-cnpj":  "^0.1",
+                    "elavora/api-datatype-cpf":  "^0.1",
+                    "elavora/api-datatype-date-time":  "^0.1",
+                    "elavora/api-datatype-email":  "^0.1",
+                    "elavora/api-datatype-file-name":  "^0.1",
+                    "elavora/api-datatype-file-path":  "^0.1",
+                    "elavora/api-datatype-folder-name":  "^0.1",
+                    "elavora/api-datatype-folder-path":  "^0.1",
+                    "elavora/api-datatype-json":  "^0.1",
+                    "elavora/api-datatype-storage-key":  "^0.1",
+                    "elavora/api-datatype-url":  "^0.1",
+                    "elavora/api-datatype-uuid":  "^0.1"
+                },
+    "autoload-dev":  {
+                         "psr-4":  {
+                                       "Elavora\\Api\\DataTypes\\Tests\\":  "tests/"
+                                   }
+                     },
+    "require-dev":  {
+                        "phpunit/phpunit":  "^10.5 || ^11.0 || ^12.0"
+                    },
+    "scripts":  {
+                    "lint":  "find tests -name \u0027*.php\u0027 -print0 | xargs -0 -n1 php -l",
+                    "test":  "phpunit -c phpunit.xml",
+                    "check":  [
+                                  "@lint",
+                                  "@test"
+                              ]
+                },
+    "config":  {
+                   "sort-packages":  true
+               },
+    "extra":  {
+                  "branch-alias":  {
+                                       "dev-main":  "0.1-dev"
+                                   }
+              }
+}
