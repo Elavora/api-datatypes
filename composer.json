@@ -13,7 +13,7 @@
                     "elavora/api-datatype-file-name":  "^0.1",
                     "elavora/api-datatype-file-path":  "^0.1",
                     "elavora/api-datatype-folder-name":  "^0.1",
-                    "elavora/api-datatype-folder-path":  "^0.1",
+                    "elavora/api-datatype-folder-path":  "^0.1 || ^0.2",
                     "elavora/api-datatype-json":  "^0.1",
                     "elavora/api-datatype-storage-key":  "^0.1",
                     "elavora/api-datatype-url":  "^0.1",
