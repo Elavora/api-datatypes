@@ -17,7 +17,7 @@
                     "elavora/api-datatype-json":  "^0.1",
                     "elavora/api-datatype-storage-key":  "^0.1",
                     "elavora/api-datatype-url":  "^0.1",
-                    "elavora/api-datatype-uuid":  "^0.1"
+                    "elavora/api-datatype-uuid":  "^0.1 || ^0.2"
                 },
     "autoload-dev":  {
                          "psr-4":  {
