@@ -1,5 +1,10 @@
 # elavora/api-datatypes
 
+[![Packagist Version](https://img.shields.io/packagist/v/elavora/api-datatypes.svg?style=flat-square)](https://packagist.org/packages/elavora/api-datatypes)
+[![PHP Version](https://img.shields.io/packagist/php-v/elavora/api-datatypes.svg?style=flat-square)](https://packagist.org/packages/elavora/api-datatypes)
+[![Composer Quality](https://github.com/Elavora/api-datatypes/actions/workflows/quality.yml/badge.svg?branch=main)](https://github.com/Elavora/api-datatypes/actions/workflows/quality.yml)
+[![CodeQL](https://github.com/Elavora/api-datatypes/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/Elavora/api-datatypes/actions/workflows/codeql.yml)
+[![License](https://img.shields.io/packagist/l/elavora/api-datatypes.svg?style=flat-square)](LICENSE)
 Pacote agregador dos DataTypes Elavora API.
 
 ## Uso
