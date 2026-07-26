@@ -2,6 +2,11 @@
 
 Pacote agregador dos DataTypes Elavora API.
 
+## Requisitos
+
+- PHP 8.3 ou superior.
+- Demais requisitos declarados em [`composer.json`](composer.json).
+
 ## Uso
 
 Instale apenas o DataType que sua aplicacao usa:
@@ -31,3 +36,5 @@ podem ser usados em attributes do framework:
 ```php
 #[RequiredFields(['email' => Email::class, 'cpf' => Cpf::class])]
 ```
+
+Consulte o [guia de uso](docs/USO.md) para validar o pacote localmente.

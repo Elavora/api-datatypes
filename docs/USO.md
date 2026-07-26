@@ -28,31 +28,18 @@ Instale este pacote quando a aplicacao precisar de varios DataTypes genericos de
 
 ## Dependencias de runtime
 
-- `elavora/api-datatype-base64` `^0.1`
-- `elavora/api-datatype-cnpj` `^0.1`
-- `elavora/api-datatype-cpf` `^0.1`
-- `elavora/api-datatype-date-time` `^0.1`
-- `elavora/api-datatype-email` `^0.1`
-- `elavora/api-datatype-file-name` `^0.1`
-- `elavora/api-datatype-file-path` `^0.1`
-- `elavora/api-datatype-folder-name` `^0.1`
-- `elavora/api-datatype-folder-path` `^0.1`
-- `elavora/api-datatype-json` `^0.1`
-- `elavora/api-datatype-storage-key` `^0.1`
-- `elavora/api-datatype-url` `^0.1`
-- `elavora/api-datatype-uuid` `^0.1`
+- As dependencias diretas e suas faixas suportadas estao declaradas em [`composer.json`](../composer.json).
 
 ## Validacao no projeto consumidor
 
-Depois de instalar o pacote, rode os testes da aplicacao consumidora. Para uma verificacao isolada do pacote, use container:
+Execute os comandos a partir da raiz do clone:
 
 ```bash
-docker run --rm -v "${PWD}:/workspace" -w "/workspace/api-datatypes" composer:2 composer validate --strict --no-check-publish
-docker run --rm -v "${PWD}:/workspace" -w "/workspace/api-datatypes" composer:2 sh -lc "find . \\( -path ./.git -o -path ./vendor \\) -prune -o -name '*.php' -print0 | xargs -0 -r -n1 php -l"
+docker run --rm -v "${PWD}:/workspace" -w /workspace composer:2 composer update --no-interaction --no-progress --prefer-dist
+docker run --rm -v "${PWD}:/workspace" -w /workspace composer:2 composer check
 ```
 
 ## Observacoes
 
-- Mantenha regras de produto fora deste pacote.
-- Prefira configurar extensoes no bootstrap da aplicacao.
-- Instale apenas os modulos que a aplicacao realmente usa.
+- Para poucos tipos, prefira instalar somente os pacotes necessarios.
+- O agregador nao adiciona regras alem das implementadas pelos pacotes individuais.
