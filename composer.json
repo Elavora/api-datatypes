@@ -7,7 +7,7 @@
                     "php":  "\u003e=8.1",
                     "elavora/api-datatype-base64":  "^0.1",
                     "elavora/api-datatype-cnpj":  "^0.1",
-                    "elavora/api-datatype-cpf":  "^0.1",
+                    "elavora/api-datatype-cpf":  "^0.1 || ^0.2",
                     "elavora/api-datatype-date-time":  "^0.1",
                     "elavora/api-datatype-email":  "^0.1",
                     "elavora/api-datatype-file-name":  "^0.1",
