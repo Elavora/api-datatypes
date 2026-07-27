@@ -1,0 +1,24 @@
+name: Quality
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+  merge_group:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Quality
+    uses: Elavora/.github/.github/workflows/quality.yml@3b7dadedc2f7559cd3ce307904175412b1b2d595
+    with:
+      coverage_min: 0
+      development_branch: fix/estabiliza-pacote
+      development_dependencies: '{"elavora/api-datatype-base64":"fix/estabiliza-pacote","elavora/api-datatype-cnpj":"fix/estabiliza-pacote","elavora/api-datatype-core":"fix/estabiliza-pacote","elavora/api-datatype-cpf":"fix/estabiliza-pacote","elavora/api-datatype-date-time":"fix/estabiliza-pacote","elavora/api-datatype-email":"fix/estabiliza-pacote","elavora/api-datatype-file-name":"fix/estabiliza-pacote","elavora/api-datatype-file-path":"fix/estabiliza-pacote","elavora/api-datatype-folder-name":"fix/estabiliza-pacote","elavora/api-datatype-folder-path":"fix/estabiliza-pacote","elavora/api-datatype-json":"fix/estabiliza-pacote","elavora/api-datatype-storage-key":"fix/estabiliza-pacote","elavora/api-datatype-url":"fix/estabiliza-pacote","elavora/api-datatype-uuid":"fix/estabiliza-pacote","elavora/api-framework":"fix/estabiliza-framework"}'
