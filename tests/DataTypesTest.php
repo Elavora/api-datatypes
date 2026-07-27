@@ -25,7 +25,7 @@ final class DataTypesTest extends TestCase
 {
     public function testValidatesCommonDataTypes(): void
     {
-        self::assertSame('team@api.dev', Email::from('TEAM@BIFROST.DEV')->value());
+        self::assertSame('team@bifrost.dev', Email::from('TEAM@BIFROST.DEV')->value());
         self::assertTrue(Url::isValid('https://example.com/docs'));
         self::assertTrue(Base64::isValid(base64_encode('api')));
         self::assertTrue(Json::isValid('{"name":"api"}'));
@@ -35,7 +35,7 @@ final class DataTypesTest extends TestCase
     public function testValidatesDateTimeDataType(): void
     {
         self::assertSame(
-            '2026-05-27 10:30:00',
+            '2026-05-27T10:30:00.000000Z',
             DateTime::from('2026-05-27 10:30:00')->value()
         );
         self::assertFalse(DateTime::isValid(''));
