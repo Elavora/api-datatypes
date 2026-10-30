@@ -45,7 +45,7 @@ final class DataTypesTest extends TestCase
     {
         self::assertSame(
             '2026-05-27 10:30:00',
-            DateTime::from('2026-05-27 10:30:00')->value()
+            DateTime::from('2026-05-27 10:30:00')->value(),
         );
         self::assertFalse(DateTime::isValid(''));
         self::assertFalse(DateTime::isValid('not a date'));
