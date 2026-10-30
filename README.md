@@ -76,6 +76,17 @@ estão em [Desenvolvimento e testes](docs/DESENVOLVIMENTO.md).
 
 ## Versões
 
+Versão `1.0.0`: exige PHP 8.3 ou superior e atualiza os 13 datatypes de `^0.1` para `^1.0` (`base64`, `cnpj`, `cpf`,
+`date-time`, `email`, `file-name`, `file-path`, `folder-name`, `folder-path`, `json`, `storage-key`, `url` e `uuid`),
+que usam o `elavora/api-datatype-core` `^2.0` e o `elavora/api-framework` `^2.0`. Antes eram PHP 8.1 e `^0.1`, que não
+funcionam mais com o framework atual. A versão traz duas quebras, que vêm dos datatypes `1.0`:
+
+- o construtor de cada datatype deixa de ser público: a criação é só por `X::from(...)`;
+- valor inválido lança `InvalidArgumentException` com a mensagem `Valor invalido para <classe>.`
+
+Os detalhes, a lista dos pacotes com a versão mínima e a migração estão no
+[Guia de uso](docs/USO.md#atualizacao-da-versao-anterior).
+
 Cada PR integrado na `main` gera uma versão automaticamente, conforme as labels do PR: sem a label `release` sai uma
 beta (`1.1.0-beta.1`), com ela sai a estável (`1.1.0`). As tags novas não têm o prefixo `v`, e as notas de cada
 GitHub Release são geradas em português a partir dos PRs. Veja [Versões e release](docs/AUTOMACAO.md#versões-e-release).

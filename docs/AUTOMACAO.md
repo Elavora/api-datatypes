@@ -438,8 +438,17 @@ depois de `:` e sem sequências `\uXXXX` (por exemplo, `">=8.3"`, e não `">=8.3
 ```
 
 O exemplo mostra só as chaves que a adoção do pipeline cria ou muda. As demais (`description`, `type`, `license`,
-`require`, `autoload-dev`, `extra.branch-alias`) continuam como estão, na ordem atual. O upgrade das dependências, do
-PHP e do `branch-alias` neste mesmo PR está em [Guia de uso](USO.md#atualizacao-da-versao-anterior).
+`require`, `autoload-dev`, `extra.branch-alias`) não mudam por causa do pipeline.
+
+Este PR também é o upgrade dos datatypes ([Guia de uso](USO.md#atualizacao-da-versao-anterior)). No `composer.json`:
+
+- `require.php` sobe de `>=8.1` para `>=8.3`.
+- Os 13 pacotes `elavora/api-datatype-*` de `require` sobem de `^0.1` para `^1.0`: `base64`, `cnpj`, `cpf`,
+  `date-time`, `email`, `file-name`, `file-path`, `folder-name`, `folder-path`, `json`, `storage-key`, `url` e `uuid`.
+  Nenhum outro pacote entra em `require`.
+- `extra.branch-alias`: `dev-main` passa de `0.1-dev` para `1.0-dev`, a série da versão que este PR gera.
+- Os pacotes `1.0.0` já estão no Packagist, menos o `elavora/api-datatype-storage-key`, que é publicado por outro
+  fluxo. O CI deste PR só fica verde depois dessa publicação.
 
 - **Pacote sem código PHP próprio.** Este repositório é um agregador: não tem `src/` nem `autoload` (só
   `autoload-dev`, para os testes). Por isso `phpstan/phpstan` **não** entra em `require-dev` e não existe o script
