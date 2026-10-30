@@ -89,6 +89,28 @@ conferido, com os valores esperados:
 | `Email::from('invalid')` | lanca `InvalidArgumentException` |
 | `Email::from('team@api.dev')` | instancia de `Elavora\Api\Framework\Contracts\Insertable`, com `value()` igual a `'team@api.dev'` |
 
+## Um valor invalido por datatype
+
+Para cada um dos 13 datatypes, um valor invalido. Com ele, `X::isValid($valor)` retorna `false` e `X::from($valor)`
+lanca `InvalidArgumentException` com a mensagem `Valor invalido para <classe>.`, onde `<classe>` e o nome completo da
+classe. Os mesmos valores sao usados em `tests/DataTypesTest.php` (`testEveryDataTypeThrowsWithTheDocumentedMessage`).
+
+| Classe | Valor invalido | Mensagem esperada |
+| --- | --- | --- |
+| `Elavora\Api\DataTypes\Base64` | `'***'` | `Valor invalido para Elavora\Api\DataTypes\Base64.` |
+| `Elavora\Api\DataTypes\Brazil\Cnpj` | `'123'` | `Valor invalido para Elavora\Api\DataTypes\Brazil\Cnpj.` |
+| `Elavora\Api\DataTypes\Brazil\Cpf` | `'123'` | `Valor invalido para Elavora\Api\DataTypes\Brazil\Cpf.` |
+| `Elavora\Api\DataTypes\DateTime` | `'not a date'` | `Valor invalido para Elavora\Api\DataTypes\DateTime.` |
+| `Elavora\Api\DataTypes\Email` | `'invalid'` | `Valor invalido para Elavora\Api\DataTypes\Email.` |
+| `Elavora\Api\DataTypes\Filesystem\FileName` | `'.env'` | `Valor invalido para Elavora\Api\DataTypes\Filesystem\FileName.` |
+| `Elavora\Api\DataTypes\Filesystem\FilePath` | `'../secret.txt'` | `Valor invalido para Elavora\Api\DataTypes\Filesystem\FilePath.` |
+| `Elavora\Api\DataTypes\Filesystem\FolderName` | `'some.folder'` | `Valor invalido para Elavora\Api\DataTypes\Filesystem\FolderName.` |
+| `Elavora\Api\DataTypes\Filesystem\FolderPath` | `'/var//uploads'` | `Valor invalido para Elavora\Api\DataTypes\Filesystem\FolderPath.` |
+| `Elavora\Api\DataTypes\Json` | `'{'` | `Valor invalido para Elavora\Api\DataTypes\Json.` |
+| `Elavora\Api\DataTypes\Storage\StorageKey` | `'/documents/report.pdf'` | `Valor invalido para Elavora\Api\DataTypes\Storage\StorageKey.` |
+| `Elavora\Api\DataTypes\Url` | `'not a url'` | `Valor invalido para Elavora\Api\DataTypes\Url.` |
+| `Elavora\Api\DataTypes\Uuid` | `'not-a-uuid'` | `Valor invalido para Elavora\Api\DataTypes\Uuid.` |
+
 ## Atualizacao da versao anterior
 
 A versao `1.0.0` do agregador exige PHP 8.3 ou superior e sobe todos os datatypes de `^0.1` para `^1.0`. Antes, o
