@@ -51,9 +51,9 @@ final class ComposerJsonTest extends TestCase
     {
         foreach (self::DATATYPES as $name) {
             self::assertSame(
-                '^3.0',
+                '^3.1',
                 $this->composer['require']["elavora/api-datatype-{$name}"] ?? null,
-                "elavora/api-datatype-{$name} deveria ser ^3.0",
+                "elavora/api-datatype-{$name} deveria ser ^3.1",
             );
         }
     }

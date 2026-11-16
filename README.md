@@ -76,6 +76,8 @@ estão em [Desenvolvimento e testes](docs/DESENVOLVIMENTO.md).
 
 ## Versões
 
+Versão `2.1.0`: atualiza os 13 datatypes para `^3.1`, que documentam o próprio tipo em `OPTIONS` (`DescribesType`).
+
 Versão `2.0.0`: exige PHP 8.4 ou superior e atualiza os 13 datatypes para `^3.0`, que têm construtor público e não têm mais `from()`.
 
 Versão `1.0.0`: exige PHP 8.3 ou superior e atualiza os 13 datatypes de `^0.1` para `^1.0` (`base64`, `cnpj`, `cpf`,
