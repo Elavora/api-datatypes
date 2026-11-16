@@ -76,6 +76,8 @@ estão em [Desenvolvimento e testes](docs/DESENVOLVIMENTO.md).
 
 ## Versões
 
+Versão `2.0.0`: exige PHP 8.4 ou superior e atualiza os 13 datatypes para `^3.0`, que têm construtor público e não têm mais `from()`.
+
 Versão `1.0.0`: exige PHP 8.3 ou superior e atualiza os 13 datatypes de `^0.1` para `^1.0` (`base64`, `cnpj`, `cpf`,
 `date-time`, `email`, `file-name`, `file-path`, `folder-name`, `folder-path`, `json`, `storage-key`, `url` e `uuid`),
 que usam o `elavora/api-datatype-core` `^2.0` e o `elavora/api-framework` `^2.0`. Antes eram PHP 8.1 e `^0.1`, que não

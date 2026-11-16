@@ -54,7 +54,7 @@ Todos exigem PHP 8.4 ou superior. A coluna "Versao minima" e a restricao do `com
 | `elavora/api-datatype-url` | `^3.0` | `Elavora\Api\DataTypes\Url` |
 | `elavora/api-datatype-uuid` | `^3.0` | `Elavora\Api\DataTypes\Uuid` |
 
-Todos estendem `Elavora\Api\DataTypes\AbstractDataType`, do `elavora/api-datatype-core`, e tem `from()`, `isValid()`,
+Todos estendem `Elavora\Api\DataTypes\AbstractDataType`, do `elavora/api-datatype-core`, e tem construtor publico (`new X(...)`), `isValid()`,
 `value()` e `jsonSerialize()`. O `Uuid` tem tambem `generate()`, e o `DateTime`, `now()` e `assertFuture()`.
 
 ## Principais pontos de entrada
@@ -112,6 +112,9 @@ classe. Os mesmos valores sao usados em `tests/DataTypesTest.php` (`testEveryDat
 | `Elavora\Api\DataTypes\Uuid` | `'not-a-uuid'` | `Valor invalido para Elavora\Api\DataTypes\Uuid.` |
 
 ## Atualizacao da versao anterior
+
+A versao `2.0.0` do agregador exige PHP 8.4 ou superior e sobe os datatypes para `^3.0`. A partir dos datatypes `3.0`
+o construtor e publico e o `from()` foi removido: troque `X::from($valor)` por `new X($valor)`.
 
 A versao `1.0.0` do agregador exige PHP 8.3 ou superior e sobe todos os datatypes de `^0.1` para `^1.0`. Antes, o
 agregador aceitava PHP 8.1 e os datatypes `^0.1`, que dependem do `elavora/api-datatype-core` `^0.1` e nao funcionam

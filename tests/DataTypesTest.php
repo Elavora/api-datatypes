@@ -19,7 +19,6 @@ use Elavora\Api\DataTypes\Storage\StorageKey;
 use Elavora\Api\DataTypes\Url;
 use Elavora\Api\DataTypes\Uuid;
 use Elavora\Api\Framework\Contracts\Insertable;
-use Error;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
@@ -34,7 +33,7 @@ final class DataTypesTest extends TestCase
 {
     public function testValidatesCommonDataTypes(): void
     {
-        self::assertSame('team@bifrost.dev', Email::from('TEAM@BIFROST.DEV')->value());
+        self::assertSame('team@bifrost.dev', (new Email('TEAM@BIFROST.DEV'))->value());
         self::assertTrue(Url::isValid('https://example.com/docs'));
         self::assertTrue(Base64::isValid(base64_encode('api')));
         self::assertTrue(Json::isValid('{"name":"api"}'));
@@ -45,7 +44,7 @@ final class DataTypesTest extends TestCase
     {
         self::assertSame(
             '2026-05-27 10:30:00',
-            DateTime::from('2026-05-27 10:30:00')->value(),
+            (new DateTime('2026-05-27 10:30:00'))->value(),
         );
         self::assertFalse(DateTime::isValid(''));
         self::assertFalse(DateTime::isValid('not a date'));
@@ -53,8 +52,8 @@ final class DataTypesTest extends TestCase
 
     public function testValidatesBrazilianDocuments(): void
     {
-        self::assertSame('52998224725', Cpf::from('529.982.247-25')->value());
-        self::assertSame('11222333000181', Cnpj::from('11.222.333/0001-81')->value());
+        self::assertSame('52998224725', (new Cpf('529.982.247-25'))->value());
+        self::assertSame('11222333000181', (new Cnpj('11.222.333/0001-81'))->value());
     }
 
     public function testValidatesFilesystemDataTypes(): void
@@ -64,7 +63,7 @@ final class DataTypesTest extends TestCase
         self::assertTrue(FolderName::isValid('avatars'));
         self::assertTrue(FolderPath::isValid('/var/uploads'));
         self::assertTrue(StorageKey::isValid('documents/report.pdf'));
-        self::assertSame('documents/report.pdf', StorageKey::from('documents\\report.pdf')->value());
+        self::assertSame('documents/report.pdf', (new StorageKey('documents\\report.pdf'))->value());
 
         self::assertFalse(FileName::isValid('.env'));
         self::assertFalse(FileName::isValid('user/name.png'));
@@ -79,7 +78,7 @@ final class DataTypesTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        Email::from('invalid');
+        new Email('invalid');
     }
 
     public function testInvalidValueMessageNamesTheClass(): void
@@ -87,7 +86,7 @@ final class DataTypesTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Valor invalido para Elavora\Api\DataTypes\Email.');
 
-        Email::from('invalid');
+        new Email('invalid');
     }
 
     /**
@@ -99,8 +98,8 @@ final class DataTypesTest extends TestCase
         self::assertFalse($class::isValid($value));
 
         try {
-            $class::from($value);
-            self::fail("{$class}::from() deveria lançar InvalidArgumentException");
+            new $class($value);
+            self::fail("new {$class}() deveria lançar InvalidArgumentException");
         } catch (InvalidArgumentException $e) {
             self::assertSame("Valor invalido para {$class}.", $e->getMessage());
         }
@@ -132,16 +131,12 @@ final class DataTypesTest extends TestCase
      * @param class-string<AbstractDataType> $class
      */
     #[DataProvider('allDataTypes')]
-    public function testConstructorIsNotPublic(string $class): void
+    public function testConstructorIsPublic(string $class): void
     {
         $constructor = (new ReflectionClass($class))->getConstructor();
 
         self::assertNotNull($constructor);
-        self::assertFalse($constructor->isPublic(), "{$class}: o construtor não pode ser público");
-
-        $this->expectException(Error::class);
-
-        new $class('valor');
+        self::assertTrue($constructor->isPublic(), "{$class}: o construtor deve ser público");
     }
 
     /**
@@ -152,7 +147,7 @@ final class DataTypesTest extends TestCase
     {
         self::assertTrue(is_subclass_of($class, AbstractDataType::class), $class);
 
-        foreach (['from', 'isValid', 'value', 'jsonSerialize'] as $method) {
+        foreach (['isValid', 'value', 'jsonSerialize'] as $method) {
             self::assertTrue(method_exists($class, $method), "{$class}::{$method}() não existe");
         }
     }
@@ -181,7 +176,7 @@ final class DataTypesTest extends TestCase
 
     public function testDataTypesAreInsertable(): void
     {
-        $email = Email::from('team@api.dev');
+        $email = new Email('team@api.dev');
 
         self::assertInstanceOf(Insertable::class, $email);
         self::assertSame('team@api.dev', $email->value());
