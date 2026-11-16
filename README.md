@@ -45,11 +45,11 @@ podem ser usados em attributes do framework:
 Este pacote não tem código próprio (não há `src/`): ele só reúne os DataTypes, e os testes conferem que eles
 funcionam juntos. Por isso não roda PHPStan.
 
-Você só precisa de Docker. O ambiente é a imagem `ghcr.io/elavora/php-dev:8.3-latest`: abra o repositório no VS Code
+Você só precisa de Docker. O ambiente é a imagem `ghcr.io/elavora/php-dev:8.4-latest`: abra o repositório no VS Code
 com **Dev Containers: Reopen in Container**, ou rode no PowerShell:
 
 ```powershell
-docker run --rm --mount "type=bind,source=$($PWD.Path),target=/workspace" -w /workspace ghcr.io/elavora/php-dev:8.3-latest sh -lc 'git config --global --add safe.directory /workspace && composer install --no-interaction --prefer-dist && composer check'
+docker run --rm --mount "type=bind,source=$($PWD.Path),target=/workspace" -w /workspace ghcr.io/elavora/php-dev:8.4-latest sh -lc 'git config --global --add safe.directory /workspace && composer install --no-interaction --prefer-dist && composer check'
 ```
 
 Scripts do Composer:
@@ -75,6 +75,8 @@ estão em [Desenvolvimento e testes](docs/DESENVOLVIMENTO.md).
 5. Confira o comentário do pipeline de qualidade no PR. Ele não bloqueia o merge, mas quem revisa olha o resultado.
 
 ## Versões
+
+Versão `2.0.0`: exige PHP 8.4 ou superior e atualiza os 13 datatypes para `^3.0`, que têm construtor público e não têm mais `from()`.
 
 Versão `1.0.0`: exige PHP 8.3 ou superior e atualiza os 13 datatypes de `^0.1` para `^1.0` (`base64`, `cnpj`, `cpf`,
 `date-time`, `email`, `file-name`, `file-path`, `folder-name`, `folder-path`, `json`, `storage-key`, `url` e `uuid`),

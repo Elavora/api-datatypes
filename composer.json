@@ -4,20 +4,20 @@
   "type": "library",
   "license": "MIT",
   "require": {
-    "php": ">=8.3",
-    "elavora/api-datatype-base64": "^1.0",
-    "elavora/api-datatype-cnpj": "^1.0",
-    "elavora/api-datatype-cpf": "^1.0",
-    "elavora/api-datatype-date-time": "^1.0",
-    "elavora/api-datatype-email": "^1.0",
-    "elavora/api-datatype-file-name": "^1.0",
-    "elavora/api-datatype-file-path": "^1.0",
-    "elavora/api-datatype-folder-name": "^1.0",
-    "elavora/api-datatype-folder-path": "^1.0",
-    "elavora/api-datatype-json": "^1.0",
-    "elavora/api-datatype-storage-key": "^1.0",
-    "elavora/api-datatype-url": "^1.0",
-    "elavora/api-datatype-uuid": "^1.0"
+    "php": ">=8.4",
+    "elavora/api-datatype-base64": "^3.0",
+    "elavora/api-datatype-cnpj": "^3.0",
+    "elavora/api-datatype-cpf": "^3.0",
+    "elavora/api-datatype-date-time": "^3.0",
+    "elavora/api-datatype-email": "^3.0",
+    "elavora/api-datatype-file-name": "^3.0",
+    "elavora/api-datatype-file-path": "^3.0",
+    "elavora/api-datatype-folder-name": "^3.0",
+    "elavora/api-datatype-folder-path": "^3.0",
+    "elavora/api-datatype-json": "^3.0",
+    "elavora/api-datatype-storage-key": "^3.0",
+    "elavora/api-datatype-url": "^3.0",
+    "elavora/api-datatype-uuid": "^3.0"
   },
   "autoload-dev": {
     "psr-4": {
@@ -43,7 +43,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-main": "1.0-dev"
+      "dev-main": "2.0-dev"
     }
   }
 }

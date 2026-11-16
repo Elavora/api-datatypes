@@ -8,7 +8,7 @@ Pacote agregador dos DataTypes Elavora API.
 composer require elavora/api-datatypes
 ```
 
-Requisitos: PHP 8.3 ou superior. O pacote nao tem codigo proprio (nao ha `src/`): ele so exige os 13 datatypes
+Requisitos: PHP 8.4 ou superior. O pacote nao tem codigo proprio (nao ha `src/`): ele so exige os 13 datatypes
 abaixo, todos na versao `^1.0`, e os instala junto com o `elavora/api-datatype-core` `^2.0` e o
 `elavora/api-framework` `^2.0`.
 
@@ -36,25 +36,25 @@ Cada datatype tem a propria pagina de uso, com as regras e os exemplos de entrad
 
 ## Pacotes incluidos
 
-Todos exigem PHP 8.3 ou superior. A coluna "Versao minima" e a restricao do `composer.json` do agregador.
+Todos exigem PHP 8.4 ou superior. A coluna "Versao minima" e a restricao do `composer.json` do agregador.
 
 | Pacote | Versao minima | Classe |
 | --- | --- | --- |
-| `elavora/api-datatype-base64` | `^1.0` | `Elavora\Api\DataTypes\Base64` |
-| `elavora/api-datatype-cnpj` | `^1.0` | `Elavora\Api\DataTypes\Brazil\Cnpj` |
-| `elavora/api-datatype-cpf` | `^1.0` | `Elavora\Api\DataTypes\Brazil\Cpf` |
-| `elavora/api-datatype-date-time` | `^1.0` | `Elavora\Api\DataTypes\DateTime` |
-| `elavora/api-datatype-email` | `^1.0` | `Elavora\Api\DataTypes\Email` |
-| `elavora/api-datatype-file-name` | `^1.0` | `Elavora\Api\DataTypes\Filesystem\FileName` |
-| `elavora/api-datatype-file-path` | `^1.0` | `Elavora\Api\DataTypes\Filesystem\FilePath` |
-| `elavora/api-datatype-folder-name` | `^1.0` | `Elavora\Api\DataTypes\Filesystem\FolderName` |
-| `elavora/api-datatype-folder-path` | `^1.0` | `Elavora\Api\DataTypes\Filesystem\FolderPath` |
-| `elavora/api-datatype-json` | `^1.0` | `Elavora\Api\DataTypes\Json` |
-| `elavora/api-datatype-storage-key` | `^1.0` | `Elavora\Api\DataTypes\Storage\StorageKey` |
-| `elavora/api-datatype-url` | `^1.0` | `Elavora\Api\DataTypes\Url` |
-| `elavora/api-datatype-uuid` | `^1.0` | `Elavora\Api\DataTypes\Uuid` |
+| `elavora/api-datatype-base64` | `^3.0` | `Elavora\Api\DataTypes\Base64` |
+| `elavora/api-datatype-cnpj` | `^3.0` | `Elavora\Api\DataTypes\Brazil\Cnpj` |
+| `elavora/api-datatype-cpf` | `^3.0` | `Elavora\Api\DataTypes\Brazil\Cpf` |
+| `elavora/api-datatype-date-time` | `^3.0` | `Elavora\Api\DataTypes\DateTime` |
+| `elavora/api-datatype-email` | `^3.0` | `Elavora\Api\DataTypes\Email` |
+| `elavora/api-datatype-file-name` | `^3.0` | `Elavora\Api\DataTypes\Filesystem\FileName` |
+| `elavora/api-datatype-file-path` | `^3.0` | `Elavora\Api\DataTypes\Filesystem\FilePath` |
+| `elavora/api-datatype-folder-name` | `^3.0` | `Elavora\Api\DataTypes\Filesystem\FolderName` |
+| `elavora/api-datatype-folder-path` | `^3.0` | `Elavora\Api\DataTypes\Filesystem\FolderPath` |
+| `elavora/api-datatype-json` | `^3.0` | `Elavora\Api\DataTypes\Json` |
+| `elavora/api-datatype-storage-key` | `^3.0` | `Elavora\Api\DataTypes\Storage\StorageKey` |
+| `elavora/api-datatype-url` | `^3.0` | `Elavora\Api\DataTypes\Url` |
+| `elavora/api-datatype-uuid` | `^3.0` | `Elavora\Api\DataTypes\Uuid` |
 
-Todos estendem `Elavora\Api\DataTypes\AbstractDataType`, do `elavora/api-datatype-core`, e tem `from()`, `isValid()`,
+Todos estendem `Elavora\Api\DataTypes\AbstractDataType`, do `elavora/api-datatype-core`, e tem construtor publico (`new X(...)`), `isValid()`,
 `value()` e `jsonSerialize()`. O `Uuid` tem tambem `generate()`, e o `DateTime`, `now()` e `assertFuture()`.
 
 ## Principais pontos de entrada
@@ -63,7 +63,7 @@ As classes da coluna "Classe" da tabela acima. O agregador nao define classes pr
 
 ## Dependencias de runtime
 
-- PHP 8.3 ou superior
+- PHP 8.4 ou superior
 - os 13 pacotes `elavora/api-datatype-*` `^1.0` da tabela acima
 
 ## O que os testes do agregador conferem
@@ -112,6 +112,9 @@ classe. Os mesmos valores sao usados em `tests/DataTypesTest.php` (`testEveryDat
 | `Elavora\Api\DataTypes\Uuid` | `'not-a-uuid'` | `Valor invalido para Elavora\Api\DataTypes\Uuid.` |
 
 ## Atualizacao da versao anterior
+
+A versao `2.0.0` do agregador exige PHP 8.4 ou superior e sobe os datatypes para `^3.0`. A partir dos datatypes `3.0`
+o construtor e publico e o `from()` foi removido: troque `X::from($valor)` por `new X($valor)`.
 
 A versao `1.0.0` do agregador exige PHP 8.3 ou superior e sobe todos os datatypes de `^0.1` para `^1.0`. Antes, o
 agregador aceitava PHP 8.1 e os datatypes `^0.1`, que dependem do `elavora/api-datatype-core` `^0.1` e nao funcionam

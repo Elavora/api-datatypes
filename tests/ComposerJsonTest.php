@@ -42,18 +42,18 @@ final class ComposerJsonTest extends TestCase
         );
     }
 
-    public function testRequiresPhp83(): void
+    public function testRequiresPhp84(): void
     {
-        self::assertSame('>=8.3', $this->composer['require']['php'] ?? null);
+        self::assertSame('>=8.4', $this->composer['require']['php'] ?? null);
     }
 
-    public function testRequiresTheThirteenDatatypesAtVersion1(): void
+    public function testRequiresTheThirteenDatatypesAtVersion3(): void
     {
         foreach (self::DATATYPES as $name) {
             self::assertSame(
-                '^1.0',
+                '^3.0',
                 $this->composer['require']["elavora/api-datatype-{$name}"] ?? null,
-                "elavora/api-datatype-{$name} deveria ser ^1.0",
+                "elavora/api-datatype-{$name} deveria ser ^3.0",
             );
         }
     }
@@ -71,9 +71,9 @@ final class ComposerJsonTest extends TestCase
         self::assertSame($expected, $actual);
     }
 
-    public function testBranchAliasIs10Dev(): void
+    public function testBranchAliasIs20Dev(): void
     {
-        self::assertSame('1.0-dev', $this->composer['extra']['branch-alias']['dev-main'] ?? null);
+        self::assertSame('2.0-dev', $this->composer['extra']['branch-alias']['dev-main'] ?? null);
     }
 
     public function testHasNoProductionAutoload(): void
