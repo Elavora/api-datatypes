@@ -11,7 +11,7 @@ const STUB =
     "\n" +
     "return Elavora\\CodeStandards\\PhpCsFixer::config(__DIR__);\n";
 
-/** Os 13 datatypes que o agregador exige, todos em ^3.0 (docs/USO.md, "Pacotes incluidos"). */
+/** Os 13 datatypes que o agregador exige, todos em ^3.1 (docs/USO.md, "Pacotes incluidos"). */
 const DATATYPES = [
     'base64', 'cnpj', 'cpf', 'date-time', 'email', 'file-name', 'file-path', 'folder-name',
     'folder-path', 'json', 'storage-key', 'url', 'uuid',
@@ -91,14 +91,14 @@ test.describe('composer.json', () => {
         assert.ok(!raw.split('\n').some((l) => /^ {4}"require"/.test(l)), 'indentação de 4 espaços encontrada');
     });
 
-    test('require tem php >=8.4 e os 13 datatypes ^3.0, e nenhum outro pacote', () => {
+    test('require tem php >=8.4 e os 13 datatypes ^3.1, e nenhum outro pacote', () => {
         const req = composer().require || {};
         assert.equal(req.php, '>=8.4');
-        const expected = Object.fromEntries(DATATYPES.map((n) => [`elavora/api-datatype-${n}`, '^3.0']));
+        const expected = Object.fromEntries(DATATYPES.map((n) => [`elavora/api-datatype-${n}`, '^3.1']));
         assert.deepEqual(
             Object.fromEntries(Object.entries(req).filter(([k]) => k !== 'php')),
             expected,
-            'require deveria ter exatamente os 13 datatypes na restrição ^3.0',
+            'require deveria ter exatamente os 13 datatypes na restrição ^3.1',
         );
     });
 

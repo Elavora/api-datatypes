@@ -40,19 +40,19 @@ Todos exigem PHP 8.4 ou superior. A coluna "Versao minima" e a restricao do `com
 
 | Pacote | Versao minima | Classe |
 | --- | --- | --- |
-| `elavora/api-datatype-base64` | `^3.0` | `Elavora\Api\DataTypes\Base64` |
-| `elavora/api-datatype-cnpj` | `^3.0` | `Elavora\Api\DataTypes\Brazil\Cnpj` |
-| `elavora/api-datatype-cpf` | `^3.0` | `Elavora\Api\DataTypes\Brazil\Cpf` |
-| `elavora/api-datatype-date-time` | `^3.0` | `Elavora\Api\DataTypes\DateTime` |
-| `elavora/api-datatype-email` | `^3.0` | `Elavora\Api\DataTypes\Email` |
-| `elavora/api-datatype-file-name` | `^3.0` | `Elavora\Api\DataTypes\Filesystem\FileName` |
-| `elavora/api-datatype-file-path` | `^3.0` | `Elavora\Api\DataTypes\Filesystem\FilePath` |
-| `elavora/api-datatype-folder-name` | `^3.0` | `Elavora\Api\DataTypes\Filesystem\FolderName` |
-| `elavora/api-datatype-folder-path` | `^3.0` | `Elavora\Api\DataTypes\Filesystem\FolderPath` |
-| `elavora/api-datatype-json` | `^3.0` | `Elavora\Api\DataTypes\Json` |
-| `elavora/api-datatype-storage-key` | `^3.0` | `Elavora\Api\DataTypes\Storage\StorageKey` |
-| `elavora/api-datatype-url` | `^3.0` | `Elavora\Api\DataTypes\Url` |
-| `elavora/api-datatype-uuid` | `^3.0` | `Elavora\Api\DataTypes\Uuid` |
+| `elavora/api-datatype-base64` | `^3.1` | `Elavora\Api\DataTypes\Base64` |
+| `elavora/api-datatype-cnpj` | `^3.1` | `Elavora\Api\DataTypes\Brazil\Cnpj` |
+| `elavora/api-datatype-cpf` | `^3.1` | `Elavora\Api\DataTypes\Brazil\Cpf` |
+| `elavora/api-datatype-date-time` | `^3.1` | `Elavora\Api\DataTypes\DateTime` |
+| `elavora/api-datatype-email` | `^3.1` | `Elavora\Api\DataTypes\Email` |
+| `elavora/api-datatype-file-name` | `^3.1` | `Elavora\Api\DataTypes\Filesystem\FileName` |
+| `elavora/api-datatype-file-path` | `^3.1` | `Elavora\Api\DataTypes\Filesystem\FilePath` |
+| `elavora/api-datatype-folder-name` | `^3.1` | `Elavora\Api\DataTypes\Filesystem\FolderName` |
+| `elavora/api-datatype-folder-path` | `^3.1` | `Elavora\Api\DataTypes\Filesystem\FolderPath` |
+| `elavora/api-datatype-json` | `^3.1` | `Elavora\Api\DataTypes\Json` |
+| `elavora/api-datatype-storage-key` | `^3.1` | `Elavora\Api\DataTypes\Storage\StorageKey` |
+| `elavora/api-datatype-url` | `^3.1` | `Elavora\Api\DataTypes\Url` |
+| `elavora/api-datatype-uuid` | `^3.1` | `Elavora\Api\DataTypes\Uuid` |
 
 Todos estendem `Elavora\Api\DataTypes\AbstractDataType`, do `elavora/api-datatype-core`, e tem construtor publico (`new X(...)`), `isValid()`,
 `value()` e `jsonSerialize()`. O `Uuid` tem tambem `generate()`, e o `DateTime`, `now()` e `assertFuture()`.
@@ -112,6 +112,8 @@ classe. Os mesmos valores sao usados em `tests/DataTypesTest.php` (`testEveryDat
 | `Elavora\Api\DataTypes\Uuid` | `'not-a-uuid'` | `Valor invalido para Elavora\Api\DataTypes\Uuid.` |
 
 ## Atualizacao da versao anterior
+
+A versao `2.1.0` do agregador sobe os 13 datatypes para `^3.1`, que declaram o proprio tipo na documentacao de `OPTIONS` (`DescribesType`: formato, mascara e regex quando fizer sentido).
 
 A versao `2.0.0` do agregador exige PHP 8.4 ou superior e sobe os datatypes para `^3.0`. A partir dos datatypes `3.0`
 o construtor e publico e o `from()` foi removido: troque `X::from($valor)` por `new X($valor)`.
