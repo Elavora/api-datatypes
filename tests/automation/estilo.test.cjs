@@ -79,9 +79,9 @@ test.describe('restrição de elavora/code-standards (exemplos da doc)', () => {
 test.describe('composer.json', () => {
     test('é formatado com 2 espaços, sem espaços duplos depois de ":" e sem sequências \\uXXXX', () => {
         const raw = h.read('composer.json');
-        assert.doesNotMatch(raw, /\\u[0-9a-fA-F]{4}/, 'sequência \\uXXXX encontrada (use ">=8.3")');
+        assert.doesNotMatch(raw, /\\u[0-9a-fA-F]{4}/, 'sequência \\uXXXX encontrada (use ">=8.4")');
         assert.doesNotMatch(raw, /":\s{2,}/, 'espaços duplos depois de ":"');
-        assert.ok(raw.includes('"php": ">=8.3"'), 'esperado "php": ">=8.3" escrito literalmente');
+        assert.ok(raw.includes('"php": ">=8.4"'), 'esperado "php": ">=8.4" escrito literalmente');
         for (const line of raw.split('\n')) {
             const indent = line.match(/^( *)/)[1].length;
             assert.equal(indent % 2, 0, `indentação que não é múltipla de 2: ${JSON.stringify(line)}`);
@@ -91,9 +91,9 @@ test.describe('composer.json', () => {
         assert.ok(!raw.split('\n').some((l) => /^ {4}"require"/.test(l)), 'indentação de 4 espaços encontrada');
     });
 
-    test('require tem php >=8.3 e os 13 datatypes ^1.0, e nenhum outro pacote', () => {
+    test('require tem php >=8.4 e os 13 datatypes ^1.0, e nenhum outro pacote', () => {
         const req = composer().require || {};
-        assert.equal(req.php, '>=8.3');
+        assert.equal(req.php, '>=8.4');
         const expected = Object.fromEntries(DATATYPES.map((n) => [`elavora/api-datatype-${n}`, '^1.0']));
         assert.deepEqual(
             Object.fromEntries(Object.entries(req).filter(([k]) => k !== 'php')),
@@ -164,8 +164,8 @@ test.describe('composer.json', () => {
         assert.ok(!('autoload' in c), 'o pacote não tem código próprio: autoload não deveria existir');
     });
 
-    test('extra.branch-alias: dev-main é 1.0-dev', () => {
-        assert.equal((((composer().extra || {})['branch-alias']) || {})['dev-main'], '1.0-dev');
+    test('extra.branch-alias: dev-main é 2.0-dev', () => {
+        assert.equal((((composer().extra || {})['branch-alias']) || {})['dev-main'], '2.0-dev');
     });
 });
 
